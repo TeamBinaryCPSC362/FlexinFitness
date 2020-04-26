@@ -8,24 +8,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.MediaController;
 import android.widget.VideoView;
-// start tutorial class ============================================================================
-public class tutorial extends AppCompatActivity implements View.OnClickListener
+
+public class Tutorial extends AppCompatActivity implements View.OnClickListener
 {
-    // declare View & ViewGroups
     Button playPushUps, playCrunches, playSquats, playLunges;
-
     VideoView pushups_video, crunches_video, squats_video, lunges_video;
-
     MediaController mediaController;
 
-    // start onCreate() ============================================================================
+    // region onCreate() =======================================================
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutorial);
 
-        // connect View & ViewGroups
         playPushUps = findViewById(R.id.pushUpsButton);
         playCrunches = findViewById(R.id.crunchesButton);
         playSquats = findViewById(R.id.squatsButton);
@@ -36,42 +32,44 @@ public class tutorial extends AppCompatActivity implements View.OnClickListener
         squats_video = findViewById(R.id.webView3);
         lunges_video = findViewById(R.id.webView4);
 
-        // setting their onClicks
         playPushUps.setOnClickListener(this);
         playCrunches.setOnClickListener(this);
         playSquats.setOnClickListener(this);
         playLunges.setOnClickListener(this);
+    } // endregion onCreate()
 
-    } // end onCreate() ============================================================================
 
-    // start onClick() =============================================================================
+    // region onClick() ========================================================
     @Override
     public void onClick(View v)
     {
-        switch (v.getId())
-        {
-            case R.id.pushUpsButton:
-                playVideo1();
-                break;
-            case R.id.crunchesButton:
-                playVideo2();
-                break;
-            case R.id.squatsButton:
-                playVideo3();
-                break;
-            case R.id.lungesButton:
-                playVideo4();
-                break;
+        switch (v.getId()) {
+        case R.id.pushUpsButton:
+            play_pushups();
+            break;
 
+        case R.id.crunchesButton:
+            play_crunches();
+            break;
+
+        case R.id.squatsButton:
+            play_squats();
+            break;
+
+        case R.id.lungesButton:
+            playVideo4();
+            break;
         }
-    } // end onClick() =============================================================================
+    } // endregion onClick()
 
-    // start playVideo() ===========================================================================
-    public void playVideo1()
+
+    // region play_pushups() ===================================================
+    public void play_pushups()
     {
         mediaController = new MediaController(this);
 
-        String pathToVideo = "android.resource://com.example.flexinfitness/" + R.raw.pushups_video_final;
+        String pathToVideo = "android.resource://com.example.flexinfitness/"
+                + R.raw.pushups_video_final;
         Uri uri = Uri.parse(pathToVideo);
         pushups_video.setVideoURI(uri);
         pushups_video.requestFocus();
@@ -79,14 +77,16 @@ public class tutorial extends AppCompatActivity implements View.OnClickListener
         mediaController.setAnchorView(pushups_video);
 
         pushups_video.start();
-    } // end playVideo() ===========================================================================
+    } // endregion play_pushups()
 
-    // start playVideo() ===========================================================================
-    public void playVideo2()
+
+    // region play_crunches() ==================================================
+    public void play_crunches()
     {
         mediaController = new MediaController(this);
 
-        String pathToVideo = "android.resource://com.example.flexinfitness/" + R.raw.crunches_video_final;
+        String pathToVideo = "android.resource://com.example.flexinfitness/"
+                + R.raw.crunches_video_final;
         Uri uri = Uri.parse(pathToVideo);
         crunches_video.setVideoURI(uri);
         crunches_video.requestFocus();
@@ -94,14 +94,16 @@ public class tutorial extends AppCompatActivity implements View.OnClickListener
         mediaController.setAnchorView(crunches_video);
 
         crunches_video.start();
-    } // end playVideo() ===========================================================================
+    } // endregion play_crunches()
 
-    // start playVideo() ===========================================================================
-    public void playVideo3()
+
+    // region play_squats() ====================================================
+    public void play_squats()
     {
         mediaController = new MediaController(this);
 
-        String pathToVideo = "android.resource://com.example.flexinfitness/" + R.raw.squat_video_final;
+        String pathToVideo = "android.resource://com.example.flexinfitness/"
+                + R.raw.squat_video_final;
         Uri uri = Uri.parse(pathToVideo);
         squats_video.setVideoURI(uri);
         squats_video.requestFocus();
@@ -109,14 +111,16 @@ public class tutorial extends AppCompatActivity implements View.OnClickListener
         mediaController.setAnchorView(squats_video);
 
         squats_video.start();
-    } // end playVideo() ===========================================================================
+    } // endregion play_squats()
 
-    // start playVideo() ===========================================================================
+
+    // region play_lunges() ====================================================
     public void playVideo4()
     {
         mediaController = new MediaController(this);
 
-        String pathToVideo = "android.resource://com.example.flexinfitness/" + R.raw.lunges_video_final;
+        String pathToVideo = "android.resource://com.example.flexinfitness/"
+                + R.raw.lunges_video_final;
         Uri uri = Uri.parse(pathToVideo);
         lunges_video.setVideoURI(uri);
         lunges_video.requestFocus();
@@ -124,6 +128,6 @@ public class tutorial extends AppCompatActivity implements View.OnClickListener
         mediaController.setAnchorView(lunges_video);
 
         lunges_video.start();
-    } // end playVideo() ===========================================================================
+    } // endregion play_lunges()
 
-} // end tutorial class ============================================================================
+} // end tutorial class

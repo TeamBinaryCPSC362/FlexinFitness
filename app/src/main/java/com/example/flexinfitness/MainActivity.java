@@ -21,12 +21,13 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity
+{
     private GoogleSignInClient mGoogleSignInClient;
     private final static int RC_SIGN_IN = 1337;
     private FirebaseAuth mAuth;
 
+    // region onStart() ========================================================
     @Override
     protected void onStart() {
         super.onStart();
@@ -34,18 +35,19 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser user = mAuth.getCurrentUser();
         // We don't want to create and send a request
         // Just log the user into the application
-        if(user != null){
+        if(user != null) {
             Intent intent = new Intent(getApplicationContext(), DashBoard.class);
             startActivity(intent);
         }
+    }// endregion onStart()
 
-    }
 
+    // region onCreate() =======================================================
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         // Creates firebase authentication instance.
         mAuth = FirebaseAuth.getInstance();
@@ -60,12 +62,11 @@ public class MainActivity extends AppCompatActivity {
                 signIn();
             }
         });
+    }// endregion onCreate()
 
-
-    }
-
-    //Creates a request.
-    private void createRequest() {
+    // region createRequest() ==================================================
+    private void createRequest()
+    {
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -74,16 +75,19 @@ public class MainActivity extends AppCompatActivity {
 
         //Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(MainActivity.this, gso);
-    }
+    }// endregion createRequest()
 
+    // region signIn() =========================================================
     // Requests a Sign-In with the created request, when the user presses sign in
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
+    }// endregion signIn()
 
+    // region onActivityResult() ===============================================
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
         super.onActivityResult(requestCode, resultCode, data);
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
@@ -96,11 +100,11 @@ public class MainActivity extends AppCompatActivity {
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 Toast.makeText(this, "Error with firebase ", Toast.LENGTH_LONG).show();
-                // ...
             }
         }
-    }
+    }// endregion onActivityResult()
 
+    // region firebaseAuthWithGoogle() =========================================
     private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
 
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
@@ -118,11 +122,11 @@ public class MainActivity extends AppCompatActivity {
                             CharSequence msg = "Firebase could not authenticate Google account.";
                             // If sign in fails, display a message to the user.
                             Toast.makeText(MainActivity.this, msg , Toast.LENGTH_LONG).show();
-
                         }
                     }
                 });
-    }
-}
+    }// endregion firebaseAuthWithGoogle()
+
+}// end class MainActivity
 
 

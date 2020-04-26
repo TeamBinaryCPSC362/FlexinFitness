@@ -6,7 +6,6 @@ import androidx.core.app.NotificationManagerCompat;
 
 
 import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,7 +35,7 @@ public class setNotifications extends AppCompatActivity {
         String title = "Logs";
         String message = "Remember to log your food daily!";
 
-        Intent activityIntent = new Intent(this, createLogEntry.class);
+        Intent activityIntent = new Intent(this, Camera.class);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, activityIntent,0);
 
 

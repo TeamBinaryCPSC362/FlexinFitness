@@ -6,7 +6,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.InputType;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -14,14 +13,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.Vector;
 
-// start workoutPlanner class ======================================================================
-public class workoutPlanner extends AppCompatActivity implements View.OnClickListener
+public class WorkoutPlanner extends AppCompatActivity implements View.OnClickListener
 {
-    // declare View & ViewGroups
     Button doneButton;
     Button submitButton;
 
@@ -32,14 +27,14 @@ public class workoutPlanner extends AppCompatActivity implements View.OnClickLis
 
     LinearLayout linearLayout;
 
-    // start onCreate() ============================================================================
+
+    // region onCreate() ======================================================
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_planner);
 
-        // connect Views & ViewGroups to XMLs
         doneButton = findViewById(R.id.doneButton);
         submitButton = findViewById(R.id.submitButton);
 
@@ -50,7 +45,6 @@ public class workoutPlanner extends AppCompatActivity implements View.OnClickLis
 
         linearLayout = findViewById(R.id.linearLayoutInsideScrollView);
 
-        // connect View & ViewGroups to their onClicks
         doneButton.setOnClickListener(this);
         submitButton.setOnClickListener(this);
 
@@ -58,36 +52,39 @@ public class workoutPlanner extends AppCompatActivity implements View.OnClickLis
         dateToPerformEditText.setOnClickListener(this);
         timeToPerformEditText.setOnClickListener(this);
         restBetweenSetsEditText.setOnClickListener(this);
-    } // end onCreate() ============================================================================
+    } // endregion onCreate()
 
-    // start onClick() =============================================================================
+
+    // region onClick() ========================================================
     @Override
     public void onClick(View v)
     {
-        switch (v.getId())
-        {
-            case R.id.submitButton:
-                Vector<String> inputs = getInputs();
-                addView(inputs);
-                clearEditTexts();
-                break;
-            case R.id.doneButton:
-                Intent backToDashboard = new Intent(this, DashBoard.class);
-                startActivity(backToDashboard);
-                break;
-        }
-    } // end onClick() =============================================================================
+        switch (v.getId()) {
 
-    // start getInputs() ===========================================================================
+        case R.id.submitButton:
+            Vector<String> inputs = getInputs();
+            addView(inputs);
+            clearEditTexts();
+            break;
+
+        case R.id.doneButton:
+            Intent backToDashboard = new Intent(this, DashBoard.class);
+            startActivity(backToDashboard);
+            break;
+        }
+    } // endregion onClick()
+
+
+    // region getInputs() ======================================================
     public Vector<String> getInputs()
     {
-        // get inputs to Strings
+        // get strings
         String str_workoutName = workoutNameEditText.getText().toString();
         String str_dateToPerform = dateToPerformEditText.getText().toString();
         String str_timeToPerform = timeToPerformEditText.getText().toString();
         String str_restBetweenSets = restBetweenSetsEditText.getText().toString();
 
-        // place in vector of strings
+        // add to vector
         Vector<String> inputs = new Vector<>();
         inputs.add(str_workoutName.toUpperCase());
         inputs.add(str_dateToPerform.toUpperCase());
@@ -95,14 +92,15 @@ public class workoutPlanner extends AppCompatActivity implements View.OnClickLis
         inputs.add(str_restBetweenSets.toUpperCase());
 
         return inputs;
-    } // end getInputs() ===========================================================================
+    } // endregion getInputs()
 
-    // start addView() =============================================================================
+
+    // region addView() ========================================================
     @SuppressLint("SetTextI18n")
     public void addView(Vector<String> inputs)
     {
-        // create workoutEntry
-        TextView workoutEntry = new TextView(workoutPlanner.this);
+        // create exercise entry
+        TextView workoutEntry = new TextView(WorkoutPlanner.this);
         workoutEntry.setId(View.generateViewId());
 
         LinearLayout.LayoutParams llp_edittext = new
@@ -121,14 +119,16 @@ public class workoutPlanner extends AppCompatActivity implements View.OnClickLis
                             inputs.get(2) +"   REST " + inputs.get(3));
         // add the view to the layout
         linearLayout.addView(workoutEntry);
-    } // end addView() =============================================================================
+    } // endregion addView()
 
-    // start clearEditTexts() ======================================================================
+
+    // region clearEditTexts() =================================================
     public void clearEditTexts()
     {
         workoutNameEditText.getText().clear();
         dateToPerformEditText.getText().clear();
         timeToPerformEditText.getText().clear();
         restBetweenSetsEditText.getText().clear();
-    } // end clearEditTexts() ======================================================================
-} // end workoutPlanner class ======================================================================
+    } // endregion clearEditTexts()
+
+} // end workoutPlanner class

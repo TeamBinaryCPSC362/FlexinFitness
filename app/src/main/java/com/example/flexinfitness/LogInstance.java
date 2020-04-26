@@ -12,10 +12,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-// start log_proof class ===========================================================================
-public class log_proof extends AppCompatActivity
+public class LogInstance extends AppCompatActivity
 {
-    // region Views & ViewGroups
     EditText    edtxt_workoutName;
     EditText    edtxt_workoutDate;
     EditText    edtxt_workoutTime;
@@ -24,10 +22,7 @@ public class log_proof extends AppCompatActivity
 
     LinearLayout scrollViewLinearLayout;
     ImageView   imgV_picture;
-    // endregion
 
-
-    // region DATA
     String workoutName;
     String workoutDate;
     String workoutTime;
@@ -37,17 +32,15 @@ public class log_proof extends AppCompatActivity
     Bitmap picture;
     String currentPhotoPath;
     String[] editTextdata = new String[40];
-    // endregion DATA
 
 
-    // region onCreate() ===========================================================================
+    // region onCreate() =======================================================
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_proof);
 
-        // region connecting views
         edtxt_workoutName = findViewById(R.id.txtV_workoutName);
         edtxt_workoutDate = findViewById(R.id.txtV_workoutDate);
         edtxt_workoutTime = findViewById(R.id.txtV_workoutTime);
@@ -56,20 +49,21 @@ public class log_proof extends AppCompatActivity
 
         scrollViewLinearLayout = findViewById(R.id.scrollViewLinearLayout);
         imgV_picture = findViewById(R.id.imgV_picture);
-        // endregion
 
         getWorkoutData();
         createAndSetEditTexts();
         setWorkoutData();
-    } // endregion onCreate() ======================================================================
+    } // endregion onCreate()
 
 
-    // region getWorkoutData() =====================================================================
+    // region getWorkoutData() =================================================
+    /*
+      In order to get the bundle of information that we passed from 'log',
+      after clicking the newly created TextView, we need to declare a new
+      intent to capture the one that we passed in
+    */
     public void getWorkoutData()
     {
-        /* in order to get the bundle of information that we passed from 'log', after clicking the newly
-            created TextView, we need to declare a new intent to capture the one that we passed in
-         */
         Intent workoutData;
         workoutData = getIntent();
 
@@ -82,10 +76,10 @@ public class log_proof extends AppCompatActivity
         editTextdata = workoutData.getStringArrayExtra("data");
 
         picture = BitmapFactory.decodeFile(currentPhotoPath);
-    } // endregion getWorkoutData() =========================================================
+    } // endregion getWorkoutData()
 
 
-    // region setWorkoutData() =====================================================================
+    // region setWorkoutData() =================================================
     public void setWorkoutData()
     {
         edtxt_workoutName.setText(workoutName);
@@ -95,29 +89,29 @@ public class log_proof extends AppCompatActivity
         edtxt_userWeight.setText(userWeight);
 
         imgV_picture.setImageBitmap(picture);
-    } // endregion setWorkoutData() ================================================================
+    } // endregion setWorkoutData() p
 
 
-    // region createEditTexts() ====================================================================
+    // region createAndSetEditTexts() ==========================================
+    // create EditText, add to layout, set text
     public void createAndSetEditTexts()
     {
-        for(int index=0; (null !=(editTextdata[index])) ;++index)
-        {
-            // create the EditText & set the properties
-            EditText exerciseEntry = new EditText(log_proof.this);
+        for(int index=0; (null !=(editTextdata[index])) ;++index) {
+
+            EditText exerciseEntry = new EditText(LogInstance.this);
             exerciseEntry.setId(View.generateViewId());
             exerciseEntry.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
             exerciseEntry.setSingleLine(false);
+
             LinearLayout.LayoutParams llp_edittext = new
                     LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                     LinearLayout.LayoutParams.WRAP_CONTENT);
             exerciseEntry.setLayoutParams(llp_edittext);
 
-            // add the view to the layout
             scrollViewLinearLayout.addView(exerciseEntry);
 
             exerciseEntry.setText(editTextdata[index]);
         }
-    }
-    // endregion createEditTexts() =================================================================
-} // end log_proof class ===========================================================================
+    }// endregion createEditTexts()
+
+} // end log_proof class =======================================================
