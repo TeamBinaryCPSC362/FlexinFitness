@@ -11,8 +11,16 @@ import android.widget.VideoView;
 
 public class Tutorial extends AppCompatActivity implements View.OnClickListener
 {
-    Button playPushUps, playCrunches, playSquats, playLunges;
-    VideoView pushups_video, crunches_video, squats_video, lunges_video;
+    Button playPushUps;
+    Button playCrunches;
+    Button playSquats;
+    Button playLunges;
+
+    VideoView pushups_video;
+    VideoView crunches_video;
+    VideoView squats_video;
+    VideoView lunges_video;
+
     MediaController mediaController;
 
     // region onCreate() =======================================================

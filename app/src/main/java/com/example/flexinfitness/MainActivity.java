@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity
     private final static int RC_SIGN_IN = 1337;
     private FirebaseAuth mAuth;
 
+
     // region onStart() ========================================================
     @Override
     protected void onStart() {
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity
         });
     }// endregion onCreate()
 
+
     // region createRequest() ==================================================
     private void createRequest()
     {
@@ -77,12 +79,14 @@ public class MainActivity extends AppCompatActivity
         mGoogleSignInClient = GoogleSignIn.getClient(MainActivity.this, gso);
     }// endregion createRequest()
 
+
     // region signIn() =========================================================
     // Requests a Sign-In with the created request, when the user presses sign in
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }// endregion signIn()
+
 
     // region onActivityResult() ===============================================
     @Override
@@ -103,6 +107,7 @@ public class MainActivity extends AppCompatActivity
             }
         }
     }// endregion onActivityResult()
+
 
     // region firebaseAuthWithGoogle() =========================================
     private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
