@@ -38,7 +38,9 @@ import java.util.Vector;
     private static final int CAMERA_CAPTURE_CODE = 6;
     private static final int REQUEST_CAMERA_CODE = 7;
 
+     // the picture is in here
     Bitmap currentPicture;
+
     String currentPhotoPath;
     String name = "example";
     String date = "example";
@@ -237,9 +239,10 @@ import java.util.Vector;
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAMERA_CAPTURE_CODE && resultCode == RESULT_OK) {
+
+            // we finally have our fucking picture
             currentPicture = BitmapFactory.decodeFile(currentPhotoPath);
             imgV_picture.setImageBitmap(currentPicture);
         }
