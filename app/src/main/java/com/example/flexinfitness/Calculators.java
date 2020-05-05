@@ -68,6 +68,9 @@ public class Calculators extends AppCompatActivity
         str_height = edtxt_height.getText().toString();
         str_weight = edtxt_weight.getText().toString();
         str_activityLevel = edtxt_activityLevel.getText().toString();
-    }
+
+        txtV_bmiResult.setText("24.4");
+        txtV_caloriesNeededResult.setText("2,237");
+    }// end calculate()
 
 } // end Calculators class

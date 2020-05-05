@@ -261,15 +261,16 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <TextView
+                    <Button
+                        android:id="@+id/btn_calculators"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginTop="12dp"
                         android:src="@drawable/ic_launcher_background"
-                        android:text="@string/functionality"
+                        android:text="@string/calculators_2"
                         android:textColor="#000000">
 
-                    </TextView>
+                    </Button>
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>

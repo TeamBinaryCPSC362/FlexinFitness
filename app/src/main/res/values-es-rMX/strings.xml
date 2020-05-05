@@ -44,4 +44,27 @@
     <string name="play_crunches">Video de Crunches</string>
     <string name="play_squats">Video de Squats</string>
     <string name="play_lunges">Video de Lunges</string>
+
+    <string name="home">HOME</string>
+    <string name="camera">CAMERA</string>
+    <string name="takePicture">Tomar Foto</string>
+    <string name="todo">todo</string>
+    <string name="todo_2">TODO</string>
+    <string name="workoutName">NOMBRE DE ENTRETENIMIENTO</string>
+    <string name="workoutDate">FECHA</string>
+    <string name="workoutTime">TIEMPO</string>
+    <string name="workoutDuration">DURACION</string>
+    <string name="userWeight">TU PESO</string>
+    <string name="addExercise">ANADIR</string>
+    <string name="save">GUARDAR</string>
+    <string name="age">EDAD</string>
+    <string name="height">ALTURA</string>
+    <string name="weight">PESO</string>
+    <string name="activity_level">NIVEL</string>
+    <string name="lbs">lbs</string>
+    <string name="inches">inches</string>
+    <string name="calories_needed">CALORIES NEEDED</string>
+    <string name="bmi">BMI</string>
+    <string name="calculate">CALCULATE</string>
+    <string name="calculators_2">CALCULATORS</string>
 </resources>
