@@ -4,11 +4,24 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
-public class Calculators extends AppCompatActivity implements View.OnClickListener{
+public class Calculators extends AppCompatActivity implements View.OnClickListener
+{
+    // INPUTS
+    TextView txtV_age;
+    TextView txtV_weight;
+    TextView txtV_height;
+    TextView txt_activityLevel;
 
-    // declaring Views & ViewGroups
-    // declaring global data members
+    EditText edtxt_age;
+    EditText edtxt_weight;
+    EditText edtxt_height;
+    EditText edtxt_activityLevel;
+
+    // OUTPUTS
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)

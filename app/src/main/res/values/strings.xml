@@ -55,4 +55,14 @@
     <string name="userWeight">Your Weight</string>
     <string name="addExercise">+ ADD EXERCISE</string>
     <string name="save">Save</string>
+    <string name="age">AGE</string>
+    <string name="height">HEIGHT</string>
+    <string name="weight">WEIGHT</string>
+    <string name="activity_level">ACTIVITY LEVEL</string>
+    <string name="lbs">lbs</string>
+    <string name="inches">inches</string>
+    <string name="calories_needed">CALORIES NEEDED</string>
+    <string name="bmi">BMI</string>
+    <string name="calculate">CALCULATE</string>
+    <string name="calculators">CALCULATORS</string>
 </resources>
